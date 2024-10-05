@@ -94,6 +94,7 @@ type
   TNBoxProviderInfoCustom = Class(TNBoxProviderInfo)
     private
       FHost: string;
+      FIsInactive: Boolean;
       FParentProvider: TNBoxProviderInfo;
     protected
       function GetRootProviderId: Integer; override;
@@ -102,6 +103,7 @@ type
       function GetAdditionalJsonData: string; virtual;
       procedure SetAdditionalData(AJsonData: string); virtual;
       property ParentProvider: TNBoxProviderInfo read FParentProvider;
+      property IsInactive: Boolean read FIsInactive write FIsInactive;
       property Host: string read FHost write FHost;
       constructor Create(AParent: TNBoxProviderInfo);
   End;
@@ -185,6 +187,10 @@ type
       function ById(AId: Integer): TNBoxProviderInfo;
       function AddProvider(ANew: TNBoxProviderInfo): boolean;
       { -------------------------- }
+      function AddCustom(const aTitleName: string;
+        aParent: TNBoxProviderInfo;
+        const aHost: string; aId: Integer = -1;
+        aIsInactive: Boolean = False): TNBoxProviderInfoCustom;
       function AddCustomBooru(ATitleName: string;
         AClientType: TBooruScraperClientType;
         AParserType: TBooruScraperParserType;
@@ -239,6 +245,7 @@ var
   BOOKMARKSDB_FILENAME : string = 'bookmarks.sqlite';
   SESSION_FILENAME     : string = 'session.sqlite';
   HISTORY_FILENAME     : string = 'history.sqlite';
+  PROVIDERS_FILENAME   : string = 'custom-providers.sqlite';
 
 implementation
 uses
@@ -249,6 +256,7 @@ uses
   NsfwBox.Provider.motherless, NsfwBox.Provider.Randomizer,
   NsfwBox.Provider.Fapello, NsfwBox.Provider.BooruScraper,
   NsfwBox.Provider.BepisDb;
+//  NsfwBox.Providers.DataBase;
 
 function GetClientTypeById(AId: TBooruScraperClientType): TBooruClientBaseClass;
 begin
@@ -281,6 +289,21 @@ begin
 end;
 
 { TNBoxProviders }
+
+function TNBoxProviders.AddCustom(const aTitleName: string;
+  aParent: TNBoxProviderInfo;
+  const aHost: string; aId: Integer;
+  aIsInactive: Boolean): TNBoxProviderInfoCustom;
+begin
+  Result := TNBoxProviderInfoCustom.Create(aParent);
+  Result.Host := aHost;
+  Result.TitleName := aTitleName;
+  Result.IsInactive := aIsInactive;
+  if (aId <> -1)
+    then Result.FId := aId
+    else Result.FId := Self.GetNextCustomId;
+  Self.AddProvider(Result);
+end;
 
 function TNBoxProviders.AddCustomBooru(ATitleName: string;
   AClientType: TBooruScraperClientType; AParserType: TBooruScraperParserType;
@@ -332,16 +355,6 @@ constructor TNBoxProviders.Create;
     AddProvider(Result);
   end;
 
-  function AddCustom(ATitleName: string; AParent: TNBoxProviderInfo;
-    AHost: string): TNBoxProviderInfoCustom;
-  begin
-    Result := TNBoxProviderInfoCustom.Create(AParent);
-    Result.FTitleName := ATitleName;
-    Result.FHost := Ahost;
-    Result.FId := Self.GetNextCustomId;
-    AddProvider(Result);
-  end;
-
 begin
   FCustomProviderBiggerId := CUSTOM_PVR_ID_MIN;
   FItems := TObjectList<TNBoxProviderInfo>.Create;
@@ -372,16 +385,20 @@ begin
   FHGoonBooru  := AddCustomBooru('hgoon.booru.org', bsTGelbooruClient, bsTGelbooruParser, HGOONBOORUORG_URL, PVR_HGOONBOORU); {PVR_HGOONBOORU}
   FE621        := AddCustomBooru('e621.net', bsTe621Client, bsTe621Parser, E621NET_URL, PVR_E621); {PVR_E621}
 
-  AddCustomBooru('footfetishbooru.booru.org', bsTGelbooruLikeClient, bsTGelbooruParser, 'https://footfetishbooru.booru.org');
-
 
   FR34JsonApi  := Add(PVR_R34JSONAPI, 'r34 JSON API', 0, TNBoxSearchReqR34JsonApi, TNBoxR34JsonApiItem);
   FR34App      := Add(PVR_R34APP, 'r34.app', 0, TNBoxSearchReqR34App, TNBoxR34AppItem);
   FRandomizer  := Add(PVR_RANDOMIZER, 'Randomizer', 0, TNBoxSearchReqRandomizer, nil, True, True);
 
-  AddCustom('pornpic.xxx', Self.NsfwXxx, 'https://pornpic.xxx');
-  AddCustom('hdporn.pics', Self.NsfwXxx, 'https://hdporn.pics');
-  AddCustom('kemono.su', Self.CoomerParty, 'https://kemono.su');
+//  AddCustom('pornpic.xxx', Self.NsfwXxx, 'https://pornpic.xxx');
+//  AddCustom('hdporn.pics', Self.NsfwXxx, 'https://hdporn.pics');
+//  AddCustom('kemono.su', Self.CoomerParty, 'https://kemono.su');
+//  AddCustomBooru('footfetishbooru.booru.org', bsTGelbooruLikeClient, bsTGelbooruParser, 'https://footfetishbooru.booru.org');
+
+//  var lDb: TNBoxProvidersDb := TNBoxProvidersDb.Create(PROVIDERS_FILENAME);
+//  lDb.UpsertUserCustomProviders(Self);
+//  lDb.LoadProvidersTo(Self);
+//  lDb.Free;
 end;
 
 destructor TNBoxProviders.Destroy;
@@ -455,6 +472,7 @@ begin
   FItemClass := AParent.ItemClass;
   FRequestClass := AParent.RequestClass;
   FFirstPageid := AParent.FFirstPageId;
+  FIsInactive := False;
   FIsWeb := AParent.IsWeb;
   FVisibleByDefault := AParent.VisibleByDefault;
   FParentProvider := AParent;
