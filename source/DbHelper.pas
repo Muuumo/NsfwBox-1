@@ -25,6 +25,7 @@ type
       procedure ForceExecScript;
       procedure ForceExecSql;
       procedure ForceOpen;
+      function BoolTo(const aValue: Boolean): Integer;
     public
       Connection: TZConnection;
       procedure ForceConnect;
@@ -41,6 +42,12 @@ implementation
 function TDbHelper.BaseExists: boolean;
 begin
   Result := FileExists(Connection.Database);
+end;
+
+function TDbHelper.BoolTo(const aValue: Boolean): Integer;
+begin
+  if aValue then Result := 1
+            else Result := 0;
 end;
 
 constructor TDbHelper.Create(ADbFilename: string);
