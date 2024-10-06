@@ -8,11 +8,8 @@ uses
   NsfwBox.Settings in 'source\NsfwBox.Settings.pas',
   NsfwBox.Interfaces in 'source\NsfwBox.Interfaces.pas',
   NsfwBox.ContentScraper in 'source\NsfwBox.ContentScraper.pas',
-  NsfwBox.Graphics in 'source\NsfwBox.Graphics.pas',
-  NsfwBox.Graphics.Browser in 'source\NsfwBox.Graphics.Browser.pas',
   NsfwBox.Consts in 'source\NsfwBox.Consts.pas',
   NsfwBox.Styling in 'source\NsfwBox.Styling.pas',
-  NsfwBox.Graphics.Rectangle in 'source\NsfwBox.Graphics.Rectangle.pas',
   Unit2 in 'source\Unit2.pas',
   NsfwBox.DownloadManager in 'source\NsfwBox.DownloadManager.pas',
   NsfwBox.Bookmarks in 'source\NsfwBox.Bookmarks.pas',
@@ -31,7 +28,6 @@ uses
   NsfwBox.Tests in 'source\NsfwBox.Tests.pas',
   NsfwBox.Logging in 'source\NsfwBox.Logging.pas',
   NsfwBox.Utils in 'source\NsfwBox.Utils.pas',
-  NsfwBox.Graphics.ImageViewer in 'source\NsfwBox.Graphics.ImageViewer.pas',
   NsfwBox.Provider.Bookmarks in 'source\providers\NsfwBox.Provider.Bookmarks.pas',
   NsfwBox.Provider.CoomerParty in 'source\providers\NsfwBox.Provider.CoomerParty.pas',
   NsfwBox.Provider.Fapello in 'source\providers\NsfwBox.Provider.Fapello.pas',
@@ -50,7 +46,11 @@ uses
   NsfwBox.Cache in 'source\NsfwBox.Cache.pas',
   FMX.Color in 'source\FMX.Color.pas',
   NsfwBox.Providers.DataBase in 'source\NsfwBox.Providers.DataBase.pas',
-  NsfwBox.Graphics.SelectControl in 'source\gui\NsfwBox.Graphics.SelectControl.pas';
+  NsfwBox.Graphics.SelectControl in 'source\gui\NsfwBox.Graphics.SelectControl.pas',
+  NsfwBox.Graphics.Browser in 'source\gui\NsfwBox.Graphics.Browser.pas',
+  NsfwBox.Graphics.ImageViewer in 'source\gui\NsfwBox.Graphics.ImageViewer.pas',
+  NsfwBox.Graphics in 'source\gui\NsfwBox.Graphics.pas',
+  NsfwBox.Graphics.Rectangle in 'source\gui\NsfwBox.Graphics.Rectangle.pas';
 
 {$R *.res}
 

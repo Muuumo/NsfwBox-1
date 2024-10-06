@@ -306,11 +306,8 @@
         <DCCReference Include="source\NsfwBox.Settings.pas"/>
         <DCCReference Include="source\NsfwBox.Interfaces.pas"/>
         <DCCReference Include="source\NsfwBox.ContentScraper.pas"/>
-        <DCCReference Include="source\NsfwBox.Graphics.pas"/>
-        <DCCReference Include="source\NsfwBox.Graphics.Browser.pas"/>
         <DCCReference Include="source\NsfwBox.Consts.pas"/>
         <DCCReference Include="source\NsfwBox.Styling.pas"/>
-        <DCCReference Include="source\NsfwBox.Graphics.Rectangle.pas"/>
         <DCCReference Include="source\Unit2.pas"/>
         <DCCReference Include="source\NsfwBox.DownloadManager.pas"/>
         <DCCReference Include="source\NsfwBox.Bookmarks.pas"/>
@@ -326,7 +323,6 @@
         <DCCReference Include="source\NsfwBox.Tests.pas"/>
         <DCCReference Include="source\NsfwBox.Logging.pas"/>
         <DCCReference Include="source\NsfwBox.Utils.pas"/>
-        <DCCReference Include="source\NsfwBox.Graphics.ImageViewer.pas"/>
         <DCCReference Include="source\providers\NsfwBox.Provider.Bookmarks.pas"/>
         <DCCReference Include="source\providers\NsfwBox.Provider.CoomerParty.pas"/>
         <DCCReference Include="source\providers\NsfwBox.Provider.Fapello.pas"/>
@@ -345,6 +341,11 @@
         <DCCReference Include="source\NsfwBox.Cache.pas"/>
         <DCCReference Include="source\FMX.Color.pas"/>
         <DCCReference Include="source\NsfwBox.Providers.DataBase.pas"/>
+        <DCCReference Include="source\gui\NsfwBox.Graphics.SelectControl.pas"/>
+        <DCCReference Include="source\gui\NsfwBox.Graphics.Browser.pas"/>
+        <DCCReference Include="source\gui\NsfwBox.Graphics.ImageViewer.pas"/>
+        <DCCReference Include="source\gui\NsfwBox.Graphics.pas"/>
+        <DCCReference Include="source\gui\NsfwBox.Graphics.Rectangle.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -375,21 +376,21 @@
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="assets\themes\default\video.png" Configuration="Release" Class="File">
+                <DeployFile LocalName="assets\themes\default\video.png" Configuration="Debug" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>assets\internal\themes\default</RemoteDir>
                         <RemoteName>video.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="assets\themes\default\content-origin-3.png" Configuration="Release" Class="File">
+                <DeployFile LocalName="assets\themes\default\content-origin-3.png" Configuration="Debug" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>assets\internal\themes\default</RemoteDir>
                         <RemoteName>content-origin-3.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="assets\themes\default\content-origin-3.png" Configuration="Debug" Class="File">
+                <DeployFile LocalName="assets\themes\default\content-origin-3.png" Configuration="Release" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>assets\internal\themes\default</RemoteDir>
                         <RemoteName>content-origin-3.png</RemoteName>
@@ -448,13 +449,6 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Debug" Class="Android_SplashImage640">
-                    <Platform Name="Android64">
-                        <Enabled>false</Enabled>
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="assets\themes\default\content-origin-4.png" Configuration="Debug" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>assets\internal\themes\default</RemoteDir>
@@ -463,6 +457,13 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Release" Class="Android_SplashImage640">
+                    <Platform Name="Android64">
+                        <Enabled>false</Enabled>
+                        <RemoteName>splash_image.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Debug" Class="Android_SplashImage640">
                     <Platform Name="Android64">
                         <Enabled>false</Enabled>
                         <RemoteName>splash_image.png</RemoteName>
@@ -1646,17 +1647,17 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="assets\themes\default\video.png" Configuration="Release" Class="File">
+                    <Platform Name="Android64">
+                        <RemoteDir>assets\internal\themes\default</RemoteDir>
+                        <RemoteName>video.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="assets\themes\default\downloads.png" Configuration="Release" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>assets\internal\themes\default</RemoteDir>
                         <RemoteName>downloads.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="assets\themes\default\video.png" Configuration="Debug" Class="File">
-                    <Platform Name="Android64">
-                        <RemoteDir>assets\internal\themes\default</RemoteDir>
-                        <RemoteName>video.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -2462,9 +2463,9 @@
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
