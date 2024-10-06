@@ -42,6 +42,7 @@ uses
   NsfwBox.Tests, NsfwBox.Logging, NsfwBox.Graphics.ImageViewer,
   NsfwBox.Utils, NsfwBox.GarbageCollector, NsfwBox.DataExportImport,
   NsfwBox.Cache,
+  NsfwBox.Graphics.SelectControl,
   { you-did-well! ---- }
   YDW.FMX.ImageWithURL.AlRectangle, YDW.FMX.ImageWithURLManager,
   YDW.FMX.ImageWithURLCacheManager, YDW.FMX.ImageWithURL.Interfaces,

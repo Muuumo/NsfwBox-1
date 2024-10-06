@@ -49,7 +49,8 @@ uses
   NsfwBox.DataExportImport in 'source\NsfwBox.DataExportImport.pas',
   NsfwBox.Cache in 'source\NsfwBox.Cache.pas',
   FMX.Color in 'source\FMX.Color.pas',
-  NsfwBox.Providers.DataBase in 'source\NsfwBox.Providers.DataBase.pas';
+  NsfwBox.Providers.DataBase in 'source\NsfwBox.Providers.DataBase.pas',
+  NsfwBox.Graphics.SelectControl in 'source\gui\NsfwBox.Graphics.SelectControl.pas';
 
 {$R *.res}
 
