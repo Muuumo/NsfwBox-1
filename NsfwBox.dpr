@@ -19,11 +19,7 @@ uses
   SimpleClipboard in 'source\SimpleClipboard.pas',
   NsfwBox.UpdateChecker in 'source\NsfwBox.UpdateChecker.pas',
   NsfwBox.MessageForDeveloper in 'source\NsfwBox.MessageForDeveloper.pas',
-  {$IFDEF MSWINDOWS}
-  NsfwBox.WindowsTitlebar in 'source\NsfwBox.WindowsTitlebar.pas',
   Windows,
-  {$ENDIF }
-  FMX.ColumnsView in 'source\FMX.ColumnsView.pas',
   NsfwBox.Tests in 'source\NsfwBox.Tests.pas',
   NsfwBox.Logging in 'source\NsfwBox.Logging.pas',
   NsfwBox.Utils in 'source\NsfwBox.Utils.pas',
@@ -50,7 +46,9 @@ uses
   NsfwBox.Graphics.ImageViewer in 'source\gui\NsfwBox.Graphics.ImageViewer.pas',
   NsfwBox.Graphics in 'source\gui\NsfwBox.Graphics.pas',
   NsfwBox.Graphics.Rectangle in 'source\gui\NsfwBox.Graphics.Rectangle.pas',
-  NsfwBox.Graphics.SearchMenu in 'source\gui\NsfwBox.Graphics.SearchMenu.pas';
+  NsfwBox.Graphics.SearchMenu in 'source\gui\NsfwBox.Graphics.SearchMenu.pas',
+  FMX.ColumnsView in 'source\gui\FMX.ColumnsView.pas',
+  NsfwBox.WindowsTitlebar in 'source\gui\NsfwBox.WindowsTitlebar.pas';
 
 {$R *.res}
 
