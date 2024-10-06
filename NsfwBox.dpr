@@ -10,7 +10,6 @@ uses
   NsfwBox.ContentScraper in 'source\NsfwBox.ContentScraper.pas',
   NsfwBox.Consts in 'source\NsfwBox.Consts.pas',
   NsfwBox.Styling in 'source\NsfwBox.Styling.pas',
-  Unit2 in 'source\Unit2.pas',
   NsfwBox.DownloadManager in 'source\NsfwBox.DownloadManager.pas',
   NsfwBox.Bookmarks in 'source\NsfwBox.Bookmarks.pas',
   DbHelper in 'source\DbHelper.pas',
@@ -50,7 +49,8 @@ uses
   NsfwBox.Graphics.Browser in 'source\gui\NsfwBox.Graphics.Browser.pas',
   NsfwBox.Graphics.ImageViewer in 'source\gui\NsfwBox.Graphics.ImageViewer.pas',
   NsfwBox.Graphics in 'source\gui\NsfwBox.Graphics.pas',
-  NsfwBox.Graphics.Rectangle in 'source\gui\NsfwBox.Graphics.Rectangle.pas';
+  NsfwBox.Graphics.Rectangle in 'source\gui\NsfwBox.Graphics.Rectangle.pas',
+  NsfwBox.Graphics.SearchMenu in 'source\gui\NsfwBox.Graphics.SearchMenu.pas';
 
 {$R *.res}
 

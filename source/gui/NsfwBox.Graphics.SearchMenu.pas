@@ -1,6 +1,6 @@
 ﻿{ ❤ 2022 by Kisspeace - https://github.com/Kisspeace --------- }
 { ❤ Part of NsfwBox ❤- https://github.com/101427274/505234915 }
-unit unit2;
+unit NsfwBox.Graphics.SearchMenu;
 
 interface
 uses
