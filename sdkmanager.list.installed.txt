@@ -1,0 +1,8 @@
+Installed packages:
+  Path                 | Version      | Description                     | Location            
+  -------              | -------      | -------                         | -------             
+  build-tools;30.0.3   | 30.0.3       | Android SDK Build-Tools 30.0.3  | build-tools\30.0.3  
+  ndk;21.1.6352462     | 21.1.6352462 | NDK (Side by side) 21.1.6352462 | ndk\21.1.6352462    
+  platform-tools       | 36.0.0       | Android SDK Platform-Tools      | platform-tools      
+  platforms;android-30 | 3            | Android SDK Platform 30         | platforms\android-30
+
